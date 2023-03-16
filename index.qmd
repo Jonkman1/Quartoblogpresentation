@@ -1,0 +1,496 @@
+---
+format:
+  revealjs: 
+    theme: [serif, custom.css]
+    filters:
+      - reveal-auto-agenda
+      - lightbox
+    auto-agenda:
+      bullets: numbered
+      heading: Agenda
+    transition: fade
+    background-transition: fade
+    slide-number: true
+    chalkboard: true
+    highlight-style: pygments
+    footer: "Quarto: Intro to a new publishing system"
+    logo: images/workshop.png
+---
+
+##  {.title}
+
+::: r-fit-text
+QUARTO: INTRO TO A NEW PUBLISHING SYSTEM 
+:::
+
+
+
+::: {style="font-size: 60px"}
+Harrie Jonkman
+:::
+
+NSC-R workshop 11-4-23
+<BR>
+
+![](images/quarto.png)
+
+::: notes
+Hi everybody! Thank you so much for joining today's session. I am so excited to introduce Quarto and many thanks to the NSC-R-team for having me today.
+:::
+
+# Introduction {.r-stretch}
+
+## Hello!
+
+<center>
+
+My name is Harrie Jonkman. 
+
+::: {.fragment .grow .semi-fade-out}
+[Here](https://cvharrie.netlify.app/) you find some information about myself.
+:::
+
+
+::: {.fragment .grow .semi-fade-out}
+I have a science data blog Harrie's Hoekje [here](https://harrieshoekjequarto.netlify.app/),
+:::
+
+
+::: {.fragment .grow .semi-fade-out}
+I worked recently on a book together with David Farrington (UK) and Frederick Groeger-Roth (Germany) [here](https://link.springer.com/book/10.1007/978-3-030-58442-9).
+:::
+
+
+::: {.fragment .grow .semi-fade-out}
+I review books on democracy and education here and here, recently started [here](https://democratieenonderwijs.netlify.app/) 
+:::
+
+::: {.fragment .grow .semi-fade-out}
+And on this moment I finish my book on poetry of Billy Collins [here](https://harriejonkmanweb.netlify.app/content/mooi_beautiful/mooi)
+:::
+
+</center>
+
+::: notes
+My name is Harrie Jonkman. I worked in the field of education and prevention, youth development and research. The last 15 years I worked at the Verwey-Jonker institute and since a few months I'm retired. I still work on research projects and have my own datascience blog, but do also other things
+:::
+
+
+# About Quarto {.r-stretch}
+
+## What is Quarto®? 
+
+<center>
+
+Quarto® is an
+
+::: {.fragment .grow .semi-fade-out}
+open-source
+:::
+
+::: {.fragment .grow .semi-fade-out}
+scientific and technical
+:::
+
+::: {.fragment .grow .semi-fade-out}
+publishing system
+:::
+
+::: {.fragment .grow .semi-fade-out}
+built on Pandoc
+:::
+
+</center>
+
+::: notes
+Quarto is an open-source scientific and technical publishing system built on Pandoc. Let's break this down: Open-source. Free software means more reproducibility, widespread sharing of knowledge and techniques, and elimination of cost barriers. You can also see the source code and contribute, too. Scientific and technical: Scientific and technical means that Quarto has specific things for journal articles or scientific papers, like support for code execution, citations, footnotes, scientific markdown, equations, citations, crossrefs, so many things. We'll be showing some of these later on, but Quarto definitely has the scientific publishing audience in mind. Publishing system: Quarto is a tool for writing dynamic documents that combine code, output, and text. It can embed output from Python, R, Julia, and Observable. Quarto can be rendered to create high-quality articles, reports, presentations, websites, blogs, and books in HTML, PDF, MS Word, ePub, and more formats. Pandoc is the tool working behind the scenes to change Quarto documents to their finalized format.Quarto documents are authored with markdown, which is a plain text format. But Pandoc markdown is very rich and lets you control your document in very specific ways while being easy to read and write. We'll cover this as well.
+:::
+
+## Quarto Advantages
+<center>
+
+Quarto® 
+
+::: {.fragment .grow .semi-fade-out}
+incorporates different packages in one system
+:::
+
+::: {.fragment .grow .semi-fade-out}
+at its core, Quarto is multilingual and independent of computational systems
+:::
+
+::: {.fragment .grow .semi-fade-out}
+expands upon R Markdown to add new languages and can add more in the future
+:::
+
+::: {.fragment .grow .semi-fade-out}
+has lot of new features
+:::
+
+</center>
+
+::: notes
+It is not necessary to open specific packages every time (blogdown for blogs, bookdown for books etc). Quarto has everything inside. It works on different systems, not only with R but also with Python, Julia and Observable. It builds on R Markdown with new features.
+:::
+
+## Quarto Goals
+
+<center>
+
+These are
+
+::: {.fragment .grow .semi-fade-out}
+create computational documents that hold source code for automation and reproducibility
+:::
+
+
+::: {.fragment .grow .semi-fade-out}
+reduce how difficult it is to make a scientific document
+:::
+
+::: {.fragment .grow .semi-fade-out}
+enable "single-source publishing" --- create Word, PDFs, HTML, etc. from one source
+:::
+
+</center>
+
+
+::: notes
+So the goals are to create these dynamic documents that can be reproducible and automated. For single-source publishing, you often need to create all sorts of output, like things that are printed, on the web, on the mobile. The idea is to being able to make publications from one source.
+:::
+
+
+
+# How Quarto works
+
+## Working in RStudio {.small}
+
+### Rendering
+
+Use the Render button (![](images/rstudio-render-button.png){width="25" height="20"}) in the RStudio IDE to render the file and preview the output with a single click or keyboard shortcut (<kbd>⇧</kbd><kbd>⌘</kbd><kbd>K</kbd>).
+
+![](images/rstudio-render.png)
+
+Automatically render on save by checking the Render on Save option:
+
+![](images/rstudio-render-on-save.png)
+
+::: notes
+In RStudio, you can use the Render button to render the file, or take it through that process of convering to markdown, pandoc processing, etc. and preview the output with a single click. If you're familiar with R Markdown, it is where the knit button would show for those document. If you prefer to automatically render whenever you save, you can check the Render on Save option on the editor toolbar. The preview will update whenever you re-render the document. Side-by-side preview works for both HTML and PDF outputs.
+:::
+
+------------------------------------------------------------------------
+
+## YAML Intelligence {.small}
+
+YAML code completion is available for project files, YAML front matter, and executable cell options:
+
+![](images/rstudio-yaml-completion.png){width="400"}
+
+If you have incorrect YAML it will also be highlighted when documents are saved:
+
+![](images/rstudio-yaml-diagnostics.png){width="400"}
+
+
+
+::: notes
+Quarto has YAML intelligence in RStudio and VS code. YAML intelligence means completion and diagnostics for errors, and its' available for project files, YAML front matter, and executable cell options. This makes it easy to write YAML and see what has gone wrong rather than getting error messages that are really hard to decipher.
+:::
+
+## Working with the RStudio Visual Editor {.small}
+
+![](images/rstudio-source-visual.png)
+
+
+
+::: notes
+RStudio has two options for editing documents: visual (on the left) and source (on the right). RStudio's visual editor offers an WYSIWYM authoring experience for markdown. So formatting (e.g. bolding text) you can use the toolbar, a keyboard shortcut (⌘B), or the markdown construct (**bold**). The plain text source code underlying the document is written for you and you can view/edit it at any point by switching to source mode for editing. You can toggle back and forth these two modes by clicking on Source and Visual in the editor toolbar (or using the keyboard shortcut ⌘⇧ F4).
+:::
+
+## Contents of a Quarto Document
+
+::: {layout-ncol="3"}
+![](images/yaml.png)
+
+![](images/code-chunks.png)
+
+![](images/markdown-text.png)
+:::
+
+::: notes
+A Quarto document contains three types of content: a YAML header, code chunks, and markdown text.
+:::
+
+
+
+
+## Code Chunks {.small}
+
+::: {layout-ncol="2"}
+![](images/code-chunks.png)
+
+-   Code chunks begin and end with three backticks (usually)
+-   Code chunks are identified with a programming language in between `{}`
+-   Can include optional chunk options, in YAML style, identified by `#|` at the beginning of the line
+:::
+
+::: notes
+Code chunks are identified with three backticks, the language in curly brackets, and can have optional chunk options identified by the hashpipe at the beginning of the line within the chunk.
+:::
+
+## Code Chunks {.small auto-animate="true"}
+
+``` markdown
+```{{r, label="plot-penguins", warning=FALSE, echo=FALSE}}
+ggplot(penguins, 
+       aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species, shape = species)) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(
+    title = "Flipper and bill length",
+    subtitle = "Dimensions for penguins at Palmer Station LTER",
+    x = "Flipper length (mm)", y = "Bill length (mm)",
+    color = "Penguin species", shape = "Penguin species"
+  ) +
+  theme_minimal()
+```
+```
+
+## Code Chunks {.small auto-animate="true"}
+
+``` markdown
+```{{r}}
+#| label: plot-penguins
+#| warning: false
+#| echo: false
+
+ggplot(penguins, 
+       aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species, shape = species)) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(
+    title = "Flipper and bill length",
+    subtitle = "Dimensions for penguins at Palmer Station LTER",
+    x = "Flipper length (mm)", y = "Bill length (mm)",
+    color = "Penguin species", shape = "Penguin species"
+  ) +
+  theme_minimal()
+```
+```
+
+## Code Chunks {.small auto-animate="true"}
+
+``` markdown
+```{{r}}
+#| label: plot-penguins
+#| warning: false
+#| echo: false
+#| fig.alt: "Scatterplot with flipper length in millimeters on
+#|  the x-axis, bill length in millimeters on the y-axis, colored
+#|  by species, showing a slightly positive relationship with
+#|  Chinstrap penguins having higher bill length but lower body
+#|  mass, Adelie with low bill length and low body mass, and
+#|  Gentoo with high body mass and high bill length."
+
+ggplot(penguins, 
+       aes(x = flipper_length_mm, y = bill_length_mm)) +
+  geom_point(aes(color = species, shape = species)) +
+  scale_color_manual(values = c("darkorange","purple","cyan4")) +
+  labs(
+    title = "Flipper and bill length",
+    subtitle = "Dimensions for penguins at Palmer Station LTER",
+    x = "Flipper length (mm)", y = "Bill length (mm)",
+    color = "Penguin species", shape = "Penguin species"
+  ) +
+  theme_minimal()
+```
+```
+
+::: notes
+The new hashpipe allows for consistency across Jupyter and knitr.
+:::
+
+# Blog as an example
+
+## New repository on GitHub
+
+![](images/Github.png)
+
+
+## Create a project for the blog
+![](images/Newproject.png)
+
+## Project Type
+
+![](images/Quartoblog.png)
+## Create Quarto Blog 
+
+![](images/Quartoblog2.png)
+
+## Structure of the blog
+
+![](images/Structure.png)
+
+## Send it over to repository and add blogs
+
+![](images/Structure2.png)
+
+
+## Restyle the blog
+<center>
+
+Different possibilities
+
+::: {.fragment .grow .semi-fade-out}
+25 styles inbuild styles
+:::
+
+::: {.fragment .grow .semi-fade-out}
+about site and 5 possibities
+:::
+
+::: {.fragment .grow .semi-fade-out}
+with css or scss file you style it yourself 
+:::
+
+</center>
+
+## Different styles
+::: {.panel-tabset}
+
+## Cosmo
+
+![](images/cosmo.png)
+
+## Darkly
+
+![](images/darkly.png)
+
+## Sketchy
+
+![](images/sketchy.png)
+
+::: 
+## Different about sites
+::: {.panel-tabset}
+
+## Jolla
+
+![](images/jolla.png)
+
+## Trestles
+
+![](images/trestles.png)
+
+## Solana
+
+![](images/solana.png)
+
+## Marquee
+
+![](images/marquee.png)
+
+## Broadside
+
+![](images/broadside.png)
+
+:::
+
+## Change of css/scss file
+
+![](images/scss.png)
+
+## Deploy it by Netlify
+
+![](images/pickrepository.png)
+
+
+
+## Site setting
+
+![](images/sitesetting.png)
+## Change site name
+
+![](images/changesitename.png)
+
+
+## Change site name2
+
+![](images/changesitename2.png)
+
+## Result
+
+[Here](https://tt-blog.netlify.app/) you see the result
+
+## Publish it
+
+<center>
+
+Different possibilities also
+
+
+::: {.fragment .grow .semi-fade-out}
+Quarto pub
+:::
+
+::: {.fragment .grow .semi-fade-out}
+Git Hub pages
+:::
+
+::: {.fragment .grow .semi-fade-out}
+rconnect or positconnect 
+:::
+
+::: {.fragment .grow .semi-fade-out}
+Netlify 
+:::
+
+::: {.fragment .grow .semi-fade-out}
+Your own deploy system
+:::
+
+</center>
+
+# Conclusion
+
+## Conclusion
+
+<center>
+
+Quarto is a perfect technical and scientific system for
+
+
+::: {.fragment .grow .semi-fade-out}
+sharing
+:::
+
+::: {.fragment .grow .semi-fade-out}
+teaching
+:::
+
+::: {.fragment .grow .semi-fade-out}
+reimagining 
+:::
+
+::: {.fragment .grow .semi-fade-out}
+collaboration
+:::
+
+
+</center>
+
+
+## Thank you!
+
+I hope that you enjoyed this intro to Quarto!
+
+-   Read the [Quarto documentation](https://quarto.org/).
+-   Check out [Awesome Quarto](https://github.com/mcanouil/awesome-quarto).
+
+## Acknowledgements
+
+-   [Isabelle Velasques](https://ivelasq.quarto.pub/building-a-blog-with-quarto/)
+-   [Albert Rapp](https://albert-rapp.de/posts/13_quarto_blog_writing_guide/13_quarto_blog_writing_guide.html) 
+-   [Bea Milz](https://beamilz.com/posts/2022-06-05-creating-a-blog-with-quarto/en/)
+-   [Tom Mock](https://www.youtube.com/watch?v=hbf7Ai3jnxY)
+-   [Mine çetinkaya-rundel](https://mine.quarto.pub/hello-quarto/#/hello-quarto-title)
