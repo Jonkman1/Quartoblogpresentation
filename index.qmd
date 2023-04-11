@@ -47,7 +47,7 @@ Hi everybody! Thank you so much for joining today's session. I am so excited to 
 My name is Harrie Jonkman. 
 
 ::: {.fragment .grow .semi-fade-out}
-[Here](https://cvharrie.netlify.app/) you find some information about myself.
+[Here](https://cvharrie.netlify.app/) you find some information about myself. [Here](https://harriejonkmanweb.netlify.app) also
 :::
 
 
@@ -62,7 +62,7 @@ I worked recently on a book together with David Farrington (UK) and Frederick Gr
 
 
 ::: {.fragment .grow .semi-fade-out}
-I review books on democracy and education here and here, recently started [here](https://democratieenonderwijs.netlify.app/) 
+I review books on democracy and education, recently for example I started [here](https://democratieenonderwijs.netlify.app/) 
 :::
 
 ::: {.fragment .grow .semi-fade-out}
@@ -485,7 +485,9 @@ collaboration
 I hope that you enjoyed this intro to Quarto!
 
 -   Read the [Quarto documentation](https://quarto.org/).
--   Check out [Awesome Quarto](https://github.com/mcanouil/awesome-quarto).
+-   Check out [Awesome Quarto](https://github.com/mcanouil/awesome-quarto).   
+-   My presentation you find [here](github.com/Jonkman1/Quartopresentation). Information about article-writing [here](github.com/Jonkman1/Quartoarticle) and information about the blog [here](github.com/Jonkman1/Quartoblog)
+-   On my HarriesHoekje-blog I wrote a blog about making and publishing a blog. You find it [here](https://harrieshoekjequarto.netlify.app/posts/2023-03-18-quarto-blog/schrijf_publiseer_blog.html)
 
 ## Acknowledgements
 
